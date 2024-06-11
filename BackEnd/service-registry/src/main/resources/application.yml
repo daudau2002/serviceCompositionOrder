@@ -1,0 +1,27 @@
+server:
+  port: 8761
+
+spring:
+    mvc:
+      cors:
+        mappings:
+          "[/**]":
+            allowed-origins: "http://localhost:3000"
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowed-headers: "*"
+            allow-credentials: true
+    application:
+        name: service-registry
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
